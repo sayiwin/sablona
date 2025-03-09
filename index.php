@@ -39,21 +39,11 @@
         <a id="next" class="next">❯</a>
         
       </section>
-      <section class="container">
-        <div class="row">
-          <div class="col-100 text-center">
-          <?php
-            $hour = date('H');
-            if ($hour < 12) {
-              echo "<h3>Dobré ráno, pan Maksym</h3>";}
-            elseif ($hour < 18) {
-              echo "<h3>Dobrý deň, pan Maksym</h3>";} 
-            else {
-              echo "<h3>Dobrý večer, pan Maksym</h3>";}
-            ?>
-          </div>
-        </div>
-      </section>
+      
+      <?php
+        include "functions.php";
+      ?>
+
       <section class="container">
         <div class="row">
           <div class="col-50">

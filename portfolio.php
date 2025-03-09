@@ -21,6 +21,9 @@
                     <h1>Portfólio</h1>
                 </div>
             </section>
+            <?php
+            include "functions.php";
+            ?>
               <section class="container">
                 <div class="row">
                   <div class="col-25 portfolio text-white text-center" id="portfolio-1">
