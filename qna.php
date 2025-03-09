@@ -20,6 +20,9 @@
         <h1>Q&A</h1>
       </div>
     </section>
+    <?php
+        include "functions.php";
+    ?>
     <section class="container">
       <div class="row">
         <div class="col-100 text-center">
