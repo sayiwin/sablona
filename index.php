@@ -23,9 +23,15 @@
         <a id="next" class="next">❯</a>
       </section>
 
-      <?php
-        include "functions.php";
-      ?>
+      <section class="container">
+        <div class="row">
+          <div class="col-100 text-center">
+            <?php
+              pozdrav()
+            ?>
+          </div>
+        </div>
+      </section>
 
       <section class="container">
         <div class="row">
