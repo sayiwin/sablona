@@ -2,7 +2,9 @@
 include "./parts/header.php";
 include "./parts/nav.php";
 ?>
-
+<?php
+    pridajPozdrav();
+?>
         <main>
             <section class="banner">
                 <div class="container text-white">
