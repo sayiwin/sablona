@@ -3,11 +3,11 @@ function pridajPozdrav()
 {
     $hour = date('H');
     if ($hour < 12) {
-        echo "<h3>Dobré ráno</h3>";
+        echo "<h3>Dobré ráno, pan Maksym</h3>";
     } elseif ($hour < 18) {
-        echo "<h3>Dobrý deň</h3>";
+        echo "<h3>Dobrý deň, pan Maksym</h3>";
     } else {
-        echo "<h3>Dobrý večer</h3>";
+        echo "<h3>Dobrý večer, pan Maksym</h3>";
     }
 }
 
