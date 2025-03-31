@@ -27,10 +27,17 @@
         </div>
       </div>
     </section>
-      <?php
-        include "functions.php";
-          insertQnA();
-      ?>
+    <?php
+      include "functions.php";
+      insertQnA();
+   ?>
+    <?php
+      include_once "classes/QnA.php";
+      use otazkyodpovede\QnA;
+
+      //$qna = new QnA();
+      //$qna->insertQnA();
+    ?>
   </div>
   </main>
   <?php
