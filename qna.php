@@ -30,13 +30,18 @@
     <?php
       include "functions.php";
       insertQnA();
-   ?>
+    ?>
     <?php
-      include_once "classes/QnA.php";
-      use otazkyodpovede\QnA;
+    require_once __DIR__ . '/classes/QnA.php';
 
-      //$qna = new QnA();
-      //$qna->insertQnA();
+    use sablona\classes\QnA;
+
+    $qna = new QnA();
+    $questions = $qna->getAllQuestions();
+
+    echo "<pre>";
+    // print_r($questions);
+    echo "</pre>";
     ?>
   </div>
   </main>

@@ -1,63 +1,19 @@
 <?php
-namespace otazkyodpovede;
+namespace sablona\classes;
 
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__.'/db/config.php');
+require_once __DIR__ . '/Database.php';
 
-use PDO;
-use Exception;
+class QnA extends Database {
+    private $table = 'gna';
 
-class QnA {
-    private $conn;
-
-    public function __construct() {
-        $this->connect();
-    }
-
-    private function connect() {
-        $config = DATABASE;
-
-        $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        );
-
+    public function getAllQuestions() {
+        $conn = $this->getConnection();
         try {
-            $this->conn = new PDO(
-                'mysql:host=' . $config['HOST'] . ';dbname=' . $config['DBNAME'] . ';port=' . $config['PORT'],
-                $config['USER_NAME'],
-                $config['PASSWORD'],
-                $options
-            );
+            $stmt = $conn->query("SELECT * FROM {$this->table}");
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
-            die("Chyba pripojenia: " . $e->getMessage());
-        }
-    }
-
-    public function insertQnA() {
-        try {
-            $data = json_decode(file_get_contents(__ROOT__.'/data/datas.json'), true);
-            $otazky = $data["otazky"];
-            $odpovede = $data["odpovede"];
-
-            $this->conn->beginTransaction();
-
-            $sql = "INSERT INTO gna (otazka, odpoved) VALUES (:otazka, :odpoved)";
-            $statement = $this->conn->prepare($sql);
-
-            for ($i = 0; $i < count($otazky); $i++) {
-                $statement->bindParam(':otazka', $otazky[$i]);
-                $statement->bindParam(':odpoved', $odpovede[$i]);
-                $statement->execute();
-            }
-
-            $this->conn->commit();
-            echo "Data boli vložené";
-        } catch (Exception $e) {
-            echo "Chyba pri vkladaní dát do databázy: " . $e->getMessage();
-            $this->conn->rollback();
-        } finally {
-            $this->conn = null;
+            error_log("Error loading questions: ".$e->getMessage());
+            return [];
         }
     }
 }
